@@ -20,6 +20,11 @@ int main()
 	int village = 0;
 	int target_village = 0;
 
+	sf::Vector2f current_position;
+	sf::Vector2f target_position;
+	float del_x;
+	float del_y;
+
 	std::vector<std::string> village_names;
 	std::stringstream stream;
 
@@ -72,9 +77,9 @@ int main()
 	sieblin_targets.push_back(5);
 
 	std::vector<int> sieblin_distances;
-	sieblin_distances.push_back(5);
+	sieblin_distances.push_back(2);
+	sieblin_distances.push_back(2);
 	sieblin_distances.push_back(3);
-	sieblin_distances.push_back(8);
 
 
 	std::vector<int> roudenfal_targets;
@@ -82,28 +87,28 @@ int main()
 	roudenfal_targets.push_back(2);
 
 	std::vector<int> roudenfal_distances;
-	roudenfal_distances.push_back(5);
-	roudenfal_distances.push_back(7);
+	roudenfal_distances.push_back(3);
+	roudenfal_distances.push_back(4);
 
 	std::vector<int> hahk_targets;
 	hahk_targets.push_back(1);
 
 	std::vector<int> hahk_distances;
-	hahk_distances.push_back(7);
+	hahk_distances.push_back(4);
 
 	std::vector<int> bard_targets;
-	bard_targets.push_back(5);
+	bard_targets.push_back(4);
 	bard_targets.push_back(6);
-	bard_targets.push_back(13);
+	bard_targets.push_back(8);
 	bard_targets.push_back(9);
 	bard_targets.push_back(10);
 
 	std::vector<int> bard_distances;
-	bard_distances.push_back(6);
-	bard_distances.push_back(3);
-	bard_distances.push_back(4);
-	bard_distances.push_back(14);
-	bard_distances.push_back(17);
+	bard_distances.push_back(2);
+	bard_distances.push_back(1);
+	bard_distances.push_back(2);
+	bard_distances.push_back(13);
+	bard_distances.push_back(11);
 
 	std::vector<int> sched_targets;
 	sched_targets.push_back(0);
@@ -111,89 +116,87 @@ int main()
 	sched_targets.push_back(3);
 
 	std::vector<int> sched_distances;
-	sched_distances.push_back(3);
+	sched_distances.push_back(2);
 	sched_distances.push_back(4);
-	sched_distances.push_back(6);
+	sched_distances.push_back(2);
 
 	std::vector<int> hesen_targets;
-	hesen_targets.push_back(7);
 	hesen_targets.push_back(0);
-	hesen_targets.push_back(6);
+	hesen_targets.push_back(7);
+	hesen_targets.push_back(8);
 
 	std::vector<int> hesen_distances;
 	hesen_distances.push_back(2);
-	hesen_distances.push_back(5);
-	hesen_distances.push_back(4);
+	hesen_distances.push_back(3);
+	hesen_distances.push_back(2);
 
 	std::vector<int> arra_targets;
-	arra_targets.push_back(11);
 	arra_targets.push_back(3);
-	arra_targets.push_back(13);
 	arra_targets.push_back(8);
-	arra_targets.push_back(10);
 	arra_targets.push_back(9);
+	arra_targets.push_back(10);
+	arra_targets.push_back(11);
 
 	std::vector<int> arra_distances;
+	arra_distances.push_back(1);
 	arra_distances.push_back(2);
-	arra_distances.push_back(5);
-	arra_distances.push_back(4);
-	arra_distances.push_back(6);
-	arra_distances.push_back(10);
-	arra_distances.push_back(12);
+	arra_distances.push_back(13);
+	arra_distances.push_back(11);
+	arra_distances.push_back(3);
 
 	std::vector<int> bud_targets;
-	bud_targets.push_back(0);
-	bud_targets.push_back(8);
-	bud_targets.push_back(13);
+	bud_targets.push_back(5);
+	bud_targets.push_back(9);
 
 	std::vector<int> bud_distances;
-	bud_distances.push_back(4);
-	bud_distances.push_back(2);
-	bud_distances.push_back(2);
+	bud_distances.push_back(3);
+	bud_distances.push_back(3);
 
 	std::vector<int> galf_targets;
-	galf_targets.push_back(7);
+	galf_targets.push_back(5);
 	galf_targets.push_back(10);
 	galf_targets.push_back(12);
 
 	std::vector<int> galf_distances;
 	galf_distances.push_back(2);
 	galf_distances.push_back(3);
-	galf_distances.push_back(6);
+	galf_distances.push_back(8);
 
 	std::vector<int> fiog_targets;
-	fiog_targets.push_back(10);
 	fiog_targets.push_back(3);
 	fiog_targets.push_back(6);
+	fiog_targets.push_back(7);
+	fiog_targets.push_back(10);
 
 	std::vector<int> fiog_distances;
-	fiog_distances.push_back(1);
 	fiog_distances.push_back(13);
-	fiog_distances.push_back(12);
+	fiog_distances.push_back(13);
+	fiog_distances.push_back(3);
+	fiog_distances.push_back(4);
 
 	std::vector<int> galeb_targets;
-	galeb_targets.push_back(9);
-	galeb_targets.push_back(8);
 	galeb_targets.push_back(3);
 	galeb_targets.push_back(6);
+	galeb_targets.push_back(8);
+	galeb_targets.push_back(9);
 
 	std::vector<int> galeb_distances;
-	galeb_distances.push_back(1);
-	galeb_distances.push_back(3);
 	galeb_distances.push_back(11);
-	galeb_distances.push_back(10);
+	galeb_distances.push_back(11);
+	galeb_distances.push_back(3);
+	galeb_distances.push_back(4);
 
 	std::vector<int> uinn_targets;
 	uinn_targets.push_back(6);
 
 	std::vector<int> uinn_distances;
-	uinn_distances.push_back(2);
+	uinn_distances.push_back(3);
 
 	std::vector<int> hab_targets;
 	hab_targets.push_back(8);
 
 	std::vector<int> hab_distances;
-	hab_distances.push_back(6);
+	hab_distances.push_back(8);
 
 	//fill in the rest of the distances
 
@@ -213,6 +216,13 @@ int main()
 	sf::Texture highlighter_texture;
 	if (!highlighter_texture.loadFromFile("highlighter.png")) {
 
+	}
+
+	sf::Texture cart;
+
+	if (!cart.loadFromFile("cart.png"))
+	{
+		std::cout << "Menu Background failed to load" << std::endl;
 	}
 
 	sf::Texture menu_background;
@@ -361,7 +371,7 @@ int main()
 					break;
 				}
 
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && buttonPressed > 80.0f) {
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && buttonPressed > 80.0f) {								
 					buttonPressed = 0;
 					if (target_village < targets.size()-1) {
 						target_village++;
@@ -372,20 +382,33 @@ int main()
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && buttonPressed > 80.0f) {
+
 					buttonPressed = 0;
 					if (target_village >= 1) {
 						target_village--;
 					}
 					else {
+						for (int i = 0; i < targets.size(); i++) {
+							std::cout << village_names[targets.at(i)] << std::endl;
+						}
 						target_village = targets.size()-1;
 					}
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && buttonPressed > 80.0f) {
 					buttonPressed = 0;
-					//GameState = 200 + target_village;
-					village = targets.at(target_village);
+					GameState = 1100;
+					current_position = sf::Vector2f(village_map_coordinates[village].x, village_map_coordinates[village].y);
+					target_position = sf::Vector2f(village_map_coordinates[targets.at(target_village)].x, village_map_coordinates[targets.at(target_village)].y);
+					del_x = ((float)current_position.x - (float)target_position.x) / (120 * distances.at(target_village));
+					del_y = ((float)current_position.y - (float)target_position.y) / (120 * distances.at(target_village));
+					//village = targets.at(target_village);
 					std::cout << village << std::endl;
+					target_village = 0;
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && buttonPressed > 80.0f) {
+
 				}
 			}
 		}
@@ -542,15 +565,49 @@ int main()
 				travel_time_text.setStyle(sf::Text::Bold);
 				travel_time_text.setFillColor(sf::Color::Yellow);
 
+				sf::Sprite cart_sprite(cart);
+				cart_sprite.setPosition(sf::Vector2f(village_map_coordinates[village].x, village_map_coordinates[village].y));
+
 				window.clear();
 				window.draw(map_background);
 				window.draw(target_village_text);
 				window.draw(travel_time_text);
 				window.draw(highlighter);
+				window.draw(cart_sprite);
 				window.display();
 			}
 			else if (GameState == 1003) {
 				window.close();
+			}
+			else if (GameState == 1100) {
+
+			std::cout << std::abs(current_position.x) << std::endl;
+			std::cout << std::abs(target_position.x) << std::endl;
+			
+			if (std::abs(current_position.x) - std::abs(target_position.x) < 0 || std::abs(current_position.y) - std::abs(target_position.y) < 0) {
+				current_position.x -= del_x;
+				current_position.y -= del_y;
+			}
+			else {
+				village = targets.at(target_village);
+				GameState = 1002;
+
+			}
+
+			sf::Sprite map_background(map_texture);
+
+			highlighter.setPosition(village_map_coordinates[targets.at(target_village)].x - 7, village_map_coordinates[targets.at(target_village)].y - 7);
+
+			sf::Sprite cart_sprite(cart);
+			cart_sprite.setPosition(sf::Vector2f(current_position.x, current_position.y));
+
+			window.clear();
+			window.draw(map_background);
+		//	window.draw(target_village_text);
+		//	window.draw(travel_time_text);
+			window.draw(highlighter);
+			window.draw(cart_sprite);
+			window.display();
 			}
 		
 		float endFrame = clock.getElapsedTime().asMilliseconds();
