@@ -20,8 +20,18 @@ int main()
 	int village = 0;
 	int target_village = 0;
 
+	sf::Vector2f current_position;
+	sf::Vector2f target_position;
+	float del_x;
+	float del_y;
+
+	sf::Vector2f character_position(m_Width / 4, m_Height / 2);
+	sf::Vector2f map_position(0,0);
+
 	std::vector<std::string> village_names;
 	std::stringstream stream;
+
+	int walkSpeed = 5;
 
 	//0
 	village_names.push_back("Sieblin");
@@ -72,9 +82,9 @@ int main()
 	sieblin_targets.push_back(5);
 
 	std::vector<int> sieblin_distances;
-	sieblin_distances.push_back(5);
+	sieblin_distances.push_back(2);
+	sieblin_distances.push_back(2);
 	sieblin_distances.push_back(3);
-	sieblin_distances.push_back(8);
 
 
 	std::vector<int> roudenfal_targets;
@@ -82,28 +92,28 @@ int main()
 	roudenfal_targets.push_back(2);
 
 	std::vector<int> roudenfal_distances;
-	roudenfal_distances.push_back(5);
-	roudenfal_distances.push_back(7);
+	roudenfal_distances.push_back(3);
+	roudenfal_distances.push_back(4);
 
 	std::vector<int> hahk_targets;
 	hahk_targets.push_back(1);
 
 	std::vector<int> hahk_distances;
-	hahk_distances.push_back(7);
+	hahk_distances.push_back(4);
 
 	std::vector<int> bard_targets;
-	bard_targets.push_back(5);
+	bard_targets.push_back(4);
 	bard_targets.push_back(6);
-	bard_targets.push_back(13);
+	bard_targets.push_back(8);
 	bard_targets.push_back(9);
 	bard_targets.push_back(10);
 
 	std::vector<int> bard_distances;
-	bard_distances.push_back(6);
-	bard_distances.push_back(3);
-	bard_distances.push_back(4);
-	bard_distances.push_back(14);
-	bard_distances.push_back(17);
+	bard_distances.push_back(2);
+	bard_distances.push_back(1);
+	bard_distances.push_back(2);
+	bard_distances.push_back(13);
+	bard_distances.push_back(11);
 
 	std::vector<int> sched_targets;
 	sched_targets.push_back(0);
@@ -111,89 +121,87 @@ int main()
 	sched_targets.push_back(3);
 
 	std::vector<int> sched_distances;
-	sched_distances.push_back(3);
+	sched_distances.push_back(2);
 	sched_distances.push_back(4);
-	sched_distances.push_back(6);
+	sched_distances.push_back(2);
 
 	std::vector<int> hesen_targets;
-	hesen_targets.push_back(7);
 	hesen_targets.push_back(0);
-	hesen_targets.push_back(6);
+	hesen_targets.push_back(7);
+	hesen_targets.push_back(8);
 
 	std::vector<int> hesen_distances;
 	hesen_distances.push_back(2);
-	hesen_distances.push_back(5);
-	hesen_distances.push_back(4);
+	hesen_distances.push_back(3);
+	hesen_distances.push_back(2);
 
 	std::vector<int> arra_targets;
-	arra_targets.push_back(11);
 	arra_targets.push_back(3);
-	arra_targets.push_back(13);
 	arra_targets.push_back(8);
-	arra_targets.push_back(10);
 	arra_targets.push_back(9);
+	arra_targets.push_back(10);
+	arra_targets.push_back(11);
 
 	std::vector<int> arra_distances;
+	arra_distances.push_back(1);
 	arra_distances.push_back(2);
-	arra_distances.push_back(5);
-	arra_distances.push_back(4);
-	arra_distances.push_back(6);
-	arra_distances.push_back(10);
-	arra_distances.push_back(12);
+	arra_distances.push_back(13);
+	arra_distances.push_back(11);
+	arra_distances.push_back(3);
 
 	std::vector<int> bud_targets;
-	bud_targets.push_back(0);
-	bud_targets.push_back(8);
-	bud_targets.push_back(13);
+	bud_targets.push_back(5);
+	bud_targets.push_back(9);
 
 	std::vector<int> bud_distances;
-	bud_distances.push_back(4);
-	bud_distances.push_back(2);
-	bud_distances.push_back(2);
+	bud_distances.push_back(3);
+	bud_distances.push_back(3);
 
 	std::vector<int> galf_targets;
-	galf_targets.push_back(7);
+	galf_targets.push_back(5);
 	galf_targets.push_back(10);
 	galf_targets.push_back(12);
 
 	std::vector<int> galf_distances;
 	galf_distances.push_back(2);
 	galf_distances.push_back(3);
-	galf_distances.push_back(6);
+	galf_distances.push_back(8);
 
 	std::vector<int> fiog_targets;
-	fiog_targets.push_back(10);
 	fiog_targets.push_back(3);
 	fiog_targets.push_back(6);
+	fiog_targets.push_back(7);
+	fiog_targets.push_back(10);
 
 	std::vector<int> fiog_distances;
-	fiog_distances.push_back(1);
 	fiog_distances.push_back(13);
-	fiog_distances.push_back(12);
+	fiog_distances.push_back(13);
+	fiog_distances.push_back(3);
+	fiog_distances.push_back(4);
 
 	std::vector<int> galeb_targets;
-	galeb_targets.push_back(9);
-	galeb_targets.push_back(8);
 	galeb_targets.push_back(3);
 	galeb_targets.push_back(6);
+	galeb_targets.push_back(8);
+	galeb_targets.push_back(9);
 
 	std::vector<int> galeb_distances;
-	galeb_distances.push_back(1);
-	galeb_distances.push_back(3);
 	galeb_distances.push_back(11);
-	galeb_distances.push_back(10);
+	galeb_distances.push_back(11);
+	galeb_distances.push_back(3);
+	galeb_distances.push_back(4);
 
 	std::vector<int> uinn_targets;
 	uinn_targets.push_back(6);
 
 	std::vector<int> uinn_distances;
-	uinn_distances.push_back(2);
+	uinn_distances.push_back(3);
 
 	std::vector<int> hab_targets;
 	hab_targets.push_back(8);
 
 	std::vector<int> hab_distances;
-	hab_distances.push_back(6);
+	hab_distances.push_back(8);
 
 	//fill in the rest of the distances
 
@@ -203,16 +211,23 @@ int main()
 	sf::Texture map_texture;
 	if (!map_texture.loadFromFile("map_background.png")) {
 
-	}	
+	}
 
 	sf::Texture sieblin_texture;
-	if (!sieblin_texture.loadFromFile("test.png")) {
+	if (!sieblin_texture.loadFromFile("sieblin.png")) {
 
 	}
 
 	sf::Texture highlighter_texture;
 	if (!highlighter_texture.loadFromFile("highlighter.png")) {
 
+	}
+
+	sf::Texture cart;
+
+	if (!cart.loadFromFile("cart.png"))
+	{
+		std::cout << "Menu Background failed to load" << std::endl;
 	}
 
 	sf::Texture menu_background;
@@ -244,13 +259,19 @@ int main()
 		std::cout << "Exit game text failed to load" << std::endl;
 	}
 
+	sf::Texture test_character;
+
+	if (!test_character.loadFromFile("character_test.png")) {
+		std::cout << "Character Texture failed to load" << std::endl;
+	}
+
 	sf::Sprite highlighter(highlighter_texture);
 
 	// Declare and load a font
 	sf::Font font;
 	font.loadFromFile("GenghisKhan.otf");
 
-	switch(title_select) {
+	switch (title_select) {
 	case 0:
 		window_title = "Some bullshit";
 		break;
@@ -259,9 +280,9 @@ int main()
 		break;
 	}
 
-	sf::RenderWindow window(sf::VideoMode(m_Width, m_Height), window_title);	
+	sf::RenderWindow window(sf::VideoMode(m_Width, m_Height), window_title);
 	float buttonPressed = 0;
-	
+
 
 	while (window.isOpen())
 	{
@@ -363,7 +384,7 @@ int main()
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up) && buttonPressed > 80.0f) {
 					buttonPressed = 0;
-					if (target_village < targets.size()-1) {
+					if (target_village < targets.size() - 1) {
 						target_village++;
 					}
 					else {
@@ -372,25 +393,108 @@ int main()
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down) && buttonPressed > 80.0f) {
+
 					buttonPressed = 0;
 					if (target_village >= 1) {
 						target_village--;
 					}
 					else {
-						target_village = targets.size()-1;
+						for (int i = 0; i < targets.size(); i++) {
+							std::cout << village_names[targets.at(i)] << std::endl;
+						}
+						target_village = targets.size() - 1;
 					}
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return) && buttonPressed > 80.0f) {
 					buttonPressed = 0;
-					//GameState = 200 + target_village;
-					village = targets.at(target_village);
+					GameState = 1100;
+					current_position = sf::Vector2f(village_map_coordinates[village].x, village_map_coordinates[village].y);
+					target_position = sf::Vector2f(village_map_coordinates[targets.at(target_village)].x, village_map_coordinates[targets.at(target_village)].y);
+					del_x = ((float)current_position.x - (float)target_position.x) / (120 * distances.at(target_village));
+					del_y = ((float)current_position.y - (float)target_position.y) / (120 * distances.at(target_village));
+					//village = targets.at(target_village);
 					std::cout << village << std::endl;
+					//target_village = 0;
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && buttonPressed > 80.0f) {
+					GameState = 200 + village;
 				}
 			}
 		}
-
 		
+		if (GameState == 200) {
+			
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+
+					if (character_position.x > 100) {
+						character_position.x -= walkSpeed;
+					}
+					else {
+						if (map_position.x < -walkSpeed) {
+							map_position.x += walkSpeed;
+						}
+						else if (character_position.x > 0) {
+								character_position.x -= walkSpeed;
+							
+						}
+					}
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+					if (character_position.x + 50 < m_Width - 100) {
+						character_position.x += walkSpeed;
+					}
+					else {
+						if (map_position.x > -1*(1600 - m_Width) + walkSpeed + 100) {
+							map_position.x -= walkSpeed;
+						}
+						else if (character_position.x < m_Width - 50) {
+								character_position.x += walkSpeed;
+							}
+					}
+				
+					/*
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+						character_position.y -= walkSpeed;
+					}
+
+					if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+						character_position.y += walkSpeed;
+					}*/
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+
+					if (character_position.y > 100) {
+						character_position.y -= walkSpeed;
+					}
+					else {
+						if (map_position.y < -walkSpeed) {
+							map_position.y += walkSpeed;
+						}
+						else if (character_position.y > 0) {
+							character_position.y -= walkSpeed;
+
+						}
+					}
+				}
+
+				if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+					if (character_position.y + 100 < m_Height - 100) {
+						character_position.y += walkSpeed;
+					}
+					else {
+						if (map_position.y > -1 * (1200 - m_Height) + walkSpeed + 100) {
+							map_position.y -= walkSpeed;
+						}
+						else if (character_position.y < m_Height - 100) {
+							character_position.y += walkSpeed;
+						}
+					}				
+			}
+		}
 
 		if (GameState == 0) {
 
@@ -432,130 +536,221 @@ int main()
 
 			}
 			window.display();
-			}
-			else if (GameState == 1001) {
-				GameState = 0;
-				std::cout << "new game";
-			}
-			else if (GameState == 1002) {
+		}
+		else if (GameState == 200) {
+
+			sf::Sprite map_background(sieblin_texture);
+			map_background.setPosition(map_position);
+			sf::Sprite character(test_character);
+			character.setPosition(character_position);
+
+			window.clear();
+			window.draw(map_background);
+			window.draw(character);
+
+			window.display();
+		}
+		else if (GameState == 1001) {
+			GameState = 0;
+			std::cout << "new game";
+		}
+		else if (GameState == 1002) {
 
 			targets.clear();
 			distances.clear();
 
-				switch (village) {
-				case(0):
-					for (int i = 0; i < sieblin_targets.size(); i++) {
-						targets.push_back(sieblin_targets.at(i));
-						distances.push_back(sieblin_distances.at(i));
-					}
-					break;
-				case (1):
-					for (int i = 0; i < roudenfal_targets.size(); i++) {
-						targets.push_back(roudenfal_targets.at(i));
-						distances.push_back(roudenfal_distances.at(i));
-					}
-					break;
-				case (2):
-					for (int i = 0; i < hahk_targets.size(); i++) {
-						targets.push_back(hahk_targets.at(i));
-						distances.push_back(hahk_distances.at(i));
-					}
-					break;
-				case (3):
-					for (int i = 0; i < bard_targets.size(); i++) {
-						targets.push_back(bard_targets.at(i));
-						distances.push_back(bard_distances.at(i));
-					}
-					break;
-				case (4):
-					for (int i = 0; i < sched_targets.size(); i++) {
-						targets.push_back(sched_targets.at(i));
-						distances.push_back(sched_distances.at(i));
-					}
-					break;
-				case (5):
-					for (int i = 0; i < hesen_targets.size(); i++) {
-						targets.push_back(hesen_targets.at(i));
-						distances.push_back(hesen_distances.at(i));
-					}
-					break;
-				case (6):
-					for (int i = 0; i < arra_targets.size(); i++) {
-						targets.push_back(arra_targets.at(i));
-						distances.push_back(arra_distances.at(i));
-					}
-					break;
-				case (7):
-					for (int i = 0; i < bud_targets.size(); i++) {
-						targets.push_back(bud_targets.at(i));
-						distances.push_back(bud_distances.at(i));
-					}
-					break;
-				case (8):
-					for (int i = 0; i < galf_targets.size(); i++) {
-						targets.push_back(galf_targets.at(i));
-						distances.push_back(galf_distances.at(i));
-					}
-					break;
-				case (9):
-					for (int i = 0; i < fiog_targets.size(); i++) {
-						targets.push_back(fiog_targets.at(i));
-						distances.push_back(fiog_distances.at(i));
-					}
-					break;
-				case (10):
-					for (int i = 0; i < galeb_targets.size(); i++) {
-						targets.push_back(galeb_targets.at(i));
-						distances.push_back(galeb_distances.at(i));
-					}
-					break;
-				case (11):
-					for (int i = 0; i < uinn_targets.size(); i++) {
-						targets.push_back(uinn_targets.at(i));
-						distances.push_back(uinn_distances.at(i));
-					}
-					break;
-				case (12):
-					for (int i = 0; i < hab_targets.size(); i++) {
-						targets.push_back(hab_targets.at(i));
-						distances.push_back(hab_distances.at(i));
-					}
-					break;
+			switch (village) {
+			case(0):
+				for (int i = 0; i < sieblin_targets.size(); i++) {
+					targets.push_back(sieblin_targets.at(i));
+					distances.push_back(sieblin_distances.at(i));
 				}
+				break;
+			case (1):
+				for (int i = 0; i < roudenfal_targets.size(); i++) {
+					targets.push_back(roudenfal_targets.at(i));
+					distances.push_back(roudenfal_distances.at(i));
+				}
+				break;
+			case (2):
+				for (int i = 0; i < hahk_targets.size(); i++) {
+					targets.push_back(hahk_targets.at(i));
+					distances.push_back(hahk_distances.at(i));
+				}
+				break;
+			case (3):
+				for (int i = 0; i < bard_targets.size(); i++) {
+					targets.push_back(bard_targets.at(i));
+					distances.push_back(bard_distances.at(i));
+				}
+				break;
+			case (4):
+				for (int i = 0; i < sched_targets.size(); i++) {
+					targets.push_back(sched_targets.at(i));
+					distances.push_back(sched_distances.at(i));
+				}
+				break;
+			case (5):
+				for (int i = 0; i < hesen_targets.size(); i++) {
+					targets.push_back(hesen_targets.at(i));
+					distances.push_back(hesen_distances.at(i));
+				}
+				break;
+			case (6):
+				for (int i = 0; i < arra_targets.size(); i++) {
+					targets.push_back(arra_targets.at(i));
+					distances.push_back(arra_distances.at(i));
+				}
+				break;
+			case (7):
+				for (int i = 0; i < bud_targets.size(); i++) {
+					targets.push_back(bud_targets.at(i));
+					distances.push_back(bud_distances.at(i));
+				}
+				break;
+			case (8):
+				for (int i = 0; i < galf_targets.size(); i++) {
+					targets.push_back(galf_targets.at(i));
+					distances.push_back(galf_distances.at(i));
+				}
+				break;
+			case (9):
+				for (int i = 0; i < fiog_targets.size(); i++) {
+					targets.push_back(fiog_targets.at(i));
+					distances.push_back(fiog_distances.at(i));
+				}
+				break;
+			case (10):
+				for (int i = 0; i < galeb_targets.size(); i++) {
+					targets.push_back(galeb_targets.at(i));
+					distances.push_back(galeb_distances.at(i));
+				}
+				break;
+			case (11):
+				for (int i = 0; i < uinn_targets.size(); i++) {
+					targets.push_back(uinn_targets.at(i));
+					distances.push_back(uinn_distances.at(i));
+				}
+				break;
+			case (12):
+				for (int i = 0; i < hab_targets.size(); i++) {
+					targets.push_back(hab_targets.at(i));
+					distances.push_back(hab_distances.at(i));
+				}
+				break;
+			}
 
 			//	window.clear();
-				sf::Sprite map_background(map_texture);
+			sf::Sprite map_background(map_texture);
 
-				highlighter.setPosition(village_map_coordinates[targets.at(target_village)].x - 7, village_map_coordinates[targets.at(target_village)].y - 7);
+			highlighter.setPosition(village_map_coordinates[targets.at(target_village)].x - 7, village_map_coordinates[targets.at(target_village)].y - 7);
 
-				sf::Text target_village_text(village_names[targets.at(target_village)], font);
-				target_village_text.setCharacterSize(30);
-				target_village_text.setStyle(sf::Text::Bold);
-				target_village_text.setFillColor(sf::Color::Yellow);
+			sf::Text target_village_text(village_names[targets.at(target_village)], font);
+			target_village_text.setCharacterSize(30);
+			target_village_text.setStyle(sf::Text::Bold);
+			target_village_text.setFillColor(sf::Color::Yellow);
 
-				stream.str(std::string());
-				stream << "travel time: " << distances.at(target_village) << " days";
-				
-				sf::Text travel_time_text(stream.str(), font);
-				travel_time_text.setPosition(sf::Vector2f(0, 40));
-				travel_time_text.setCharacterSize(30);
-				travel_time_text.setStyle(sf::Text::Bold);
-				travel_time_text.setFillColor(sf::Color::Yellow);
+			stream.str(std::string());
+			stream << "travel time: " << distances.at(target_village) << " days";
 
-				window.clear();
-				window.draw(map_background);
-				window.draw(target_village_text);
-				window.draw(travel_time_text);
-				window.draw(highlighter);
-				window.display();
+			sf::Text travel_time_text(stream.str(), font);
+			travel_time_text.setPosition(sf::Vector2f(0, 40));
+			travel_time_text.setCharacterSize(30);
+			travel_time_text.setStyle(sf::Text::Bold);
+			travel_time_text.setFillColor(sf::Color::Yellow);
+
+			sf::Sprite cart_sprite(cart);
+			cart_sprite.setPosition(sf::Vector2f(village_map_coordinates[village].x, village_map_coordinates[village].y));
+
+			window.clear();
+			window.draw(map_background);
+			window.draw(target_village_text);
+			window.draw(travel_time_text);
+			window.draw(highlighter);
+			window.draw(cart_sprite);
+			window.display();
+		}
+		else if (GameState == 1003) {
+			window.close();
+		}
+		else if (GameState == 1100) {
+
+			std::cout << "current: " << current_position.x << std::endl;
+			std::cout << "target: " << target_position.x << std::endl;
+
+			bool complete_journey = false;
+
+			if (current_position.x < target_position.x) {
+				if (current_position.y < target_position.y) {
+					if (current_position.x - target_position.x < -2 * del_x || current_position.y - target_position.y < -2 * del_y) {
+						current_position.x -= del_x;
+						current_position.y -= del_y;
+					}
+
+					if (current_position.x - target_position.x > -0.5 && current_position.y - target_position.y > -0.5) {
+						village = targets.at(target_village);
+						GameState = 1002;
+						target_village = 0;
+					}
+				}
+
+				if (current_position.y > target_position.y) {
+					if (current_position.x - target_position.x < 0 || current_position.y - target_position.y > 0) {
+						current_position.x -= del_x;
+						current_position.y -= del_y;
+					}
+					if (current_position.x - target_position.x > -0.5 && current_position.y - target_position.y < 0.5) {
+						village = targets.at(target_village);
+						GameState = 1002;
+						target_village = 0;
+					}
+				}
+			} else if (current_position.x > target_position.x) {
+				if (current_position.y < target_position.y) {
+					if (current_position.x - target_position.x > 0 || current_position.y - target_position.y < 0) {
+						current_position.x -= del_x;
+						current_position.y -= del_y;
+					}
+					if (current_position.x - target_position.x < 0.5 && current_position.y - target_position.y > -0.5) {
+						village = targets.at(target_village);
+						GameState = 1002;
+						target_village = 0;
+					}
+				}
+
+				if (current_position.y > target_position.y) {
+					if (current_position.x - target_position.x > 0 || current_position.y - target_position.y > 0) {
+						current_position.x -= del_x;
+						current_position.y -= del_y;
+					}
+					if (current_position.x - target_position.x < 0.5 && current_position.y - target_position.y < 0.5) {
+						village = targets.at(target_village);
+						GameState = 1002;
+						target_village = 0;
+					}
+				}
 			}
-			else if (GameState == 1003) {
-				window.close();
-			}
-		
+
+			sf::Sprite map_background(map_texture);
+
+			highlighter.setPosition(village_map_coordinates[targets.at(target_village)].x - 7, village_map_coordinates[targets.at(target_village)].y - 7);
+
+			sf::Sprite cart_sprite(cart);
+			cart_sprite.setPosition(sf::Vector2f(current_position.x, current_position.y));
+
+			window.clear();
+			window.draw(map_background);
+			//	window.draw(target_village_text);
+			//	window.draw(travel_time_text);
+			window.draw(highlighter);
+			window.draw(cart_sprite);
+			window.display();
+		}
+
 		float endFrame = clock.getElapsedTime().asMilliseconds();
 
 		while (endFrame - startFrame < 16.667f) {
+
 			endFrame = clock.getElapsedTime().asMilliseconds();
 		}
 		buttonPressed += clock.getElapsedTime().asMilliseconds();
