@@ -5,11 +5,81 @@
 #include <vector>
 #include <sstream>
 
+void town_keyboard_movement(sf::Vector2f &character_position, sf::Vector2f &map_position, sf::Vector2f map_size, int walkSpeed, int m_Width, int m_Height) {
+	
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+
+			if (character_position.x > 100) {
+				character_position.x -= walkSpeed;
+			}
+			else {
+				if (map_position.x < -walkSpeed) {
+					map_position.x += walkSpeed;
+				}
+				else if (character_position.x > 0) {
+					character_position.x -= walkSpeed;
+
+				}
+			}
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+			if (character_position.x + 50 < m_Width - 100) {
+				character_position.x += walkSpeed;
+			}
+			else {
+				if (map_position.x > -1 * (map_size.x - m_Width) + walkSpeed + 100) {
+					map_position.x -= walkSpeed;
+				}
+				else if (character_position.x < m_Width - 50) {
+					character_position.x += walkSpeed;
+				}
+			}
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+
+			if (character_position.y > 100) {
+				character_position.y -= walkSpeed;
+			}
+			else {
+				if (map_position.y < -walkSpeed) {
+					map_position.y += walkSpeed;
+				}
+				else if (character_position.y > 0) {
+					character_position.y -= walkSpeed;
+
+				}
+			}
+		}
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+			if (character_position.y + 100 < m_Height - 100) {
+				character_position.y += walkSpeed;
+			}
+			else {
+				if (map_position.y > -1 * (map_size.y - m_Height) + walkSpeed + 100) {
+					map_position.y -= walkSpeed;
+				}
+				else if (character_position.y < m_Height - 100) {
+					character_position.y += walkSpeed;
+				}
+			}
+		}
+}
+
+class Player {
+public:
+	int gold;
+};
+
 int main()
 {
 	float aspect = 0.75;
 	int m_Width = 800;
 	int m_Height = m_Width * aspect;
+
+	int count = 0;
 
 	int GameState = 0;
 	srand(time(0));
@@ -19,6 +89,9 @@ int main()
 
 	int village = 0;
 	int target_village = 0;
+
+	Player player;
+	player.gold = 100;
 
 	sf::Vector2f current_position;
 	sf::Vector2f target_position;
@@ -31,7 +104,7 @@ int main()
 	std::vector<std::string> village_names;
 	std::stringstream stream;
 
-	int walkSpeed = 5;
+	int walkSpeed = 500;
 
 	//0
 	village_names.push_back("Sieblin");
@@ -85,7 +158,6 @@ int main()
 	sieblin_distances.push_back(2);
 	sieblin_distances.push_back(2);
 	sieblin_distances.push_back(3);
-
 
 	std::vector<int> roudenfal_targets;
 	roudenfal_targets.push_back(0);
@@ -203,8 +275,6 @@ int main()
 	std::vector<int> hab_distances;
 	hab_distances.push_back(8);
 
-	//fill in the rest of the distances
-
 	std::vector<int> targets;
 	std::vector<int> distances;
 
@@ -215,6 +285,16 @@ int main()
 
 	sf::Texture sieblin_texture;
 	if (!sieblin_texture.loadFromFile("sieblin.png")) {
+
+	}
+
+	sf::Texture roudenfal_texture;
+	if (!roudenfal_texture.loadFromFile("roudenfal.png")) {
+		std::cout << "Roudenfal background failed to load" << std::endl;
+	}
+
+	sf::Texture crab_battle;
+	if (!crab_battle.loadFromFile("crabbattle.png")) {
 
 	}
 
@@ -267,7 +347,6 @@ int main()
 
 	sf::Sprite highlighter(highlighter_texture);
 
-	// Declare and load a font
 	sf::Font font;
 	font.loadFromFile("GenghisKhan.otf");
 
@@ -295,8 +374,82 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window.close();
+		}
 
-			if (GameState == 1002) {
+		if (GameState == 0) { //main menu gamestate
+			window.clear();
+
+			sf::Sprite background(menu_background);
+			sf::Sprite title(title_texture);
+			sf::Sprite new_game(new_game_txt);
+			sf::Sprite continue_menu(continue_txt);
+			sf::Sprite exit_game(exit_game_txt);
+
+			title.setPosition(sf::Vector2f((m_Width / 2 - title.getTexture()->getSize().x / 2), m_Height / 4));
+			new_game.setPosition(sf::Vector2f((m_Width / 2 - new_game.getTexture()->getSize().x / 2), title.getPosition().y + title.getTexture()->getSize().y));
+			continue_menu.setPosition(sf::Vector2f((m_Width / 2 - continue_menu.getTexture()->getSize().x / 2), new_game.getPosition().y + new_game.getTexture()->getSize().y));
+			exit_game.setPosition(sf::Vector2f((m_Width / 2 - exit_game.getTexture()->getSize().x / 2), continue_menu.getPosition().y + continue_menu.getTexture()->getSize().y));
+
+			window.draw(background);
+			window.draw(title);
+			window.draw(new_game);
+			window.draw(continue_menu);
+			window.draw(exit_game);
+
+			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+			{
+				if (sf::Mouse::getPosition(window).x > new_game.getPosition().x && sf::Mouse::getPosition(window).x < new_game.getPosition().x + new_game.getTexture()->getSize().x)
+					if (sf::Mouse::getPosition(window).y > new_game.getPosition().y && sf::Mouse::getPosition(window).y < new_game.getPosition().y + new_game.getTexture()->getSize().y) {
+						GameState = 1001;
+					}
+
+				if (sf::Mouse::getPosition(window).x > continue_menu.getPosition().x && sf::Mouse::getPosition(window).x < continue_menu.getPosition().x + continue_menu.getTexture()->getSize().x)
+					if (sf::Mouse::getPosition(window).y > continue_menu.getPosition().y && sf::Mouse::getPosition(window).y < continue_menu.getPosition().y + continue_menu.getTexture()->getSize().y) {
+						GameState = 1002;
+					}
+
+				if (sf::Mouse::getPosition(window).x > exit_game.getPosition().x && sf::Mouse::getPosition(window).x < exit_game.getPosition().x + exit_game.getTexture()->getSize().x)
+					if (sf::Mouse::getPosition(window).y > exit_game.getPosition().y && sf::Mouse::getPosition(window).y < exit_game.getPosition().y + exit_game.getTexture()->getSize().y) {
+						GameState = 1003;
+					}
+
+			}
+			window.display();
+			//towns
+		} else if (GameState == 200) {//sieblin
+			sf::Sprite map_background(sieblin_texture);
+			map_background.setPosition(map_position);
+			sf::Sprite character(test_character);
+			character.setPosition(character_position);
+
+			town_keyboard_movement(character_position, map_position, sf::Vector2f(map_background.getGlobalBounds().width, map_background.getGlobalBounds().height), walkSpeed, m_Width, m_Height);
+
+			window.clear();
+			window.draw(map_background);
+			window.draw(character);
+
+			window.display();
+		} else if (GameState == 201) {//roudenfal
+			sf::Sprite map_background(roudenfal_texture);
+			map_background.setPosition(map_position);
+			sf::Sprite character(test_character);
+			character.setPosition(character_position);
+
+			town_keyboard_movement(character_position, map_position, sf::Vector2f(map_background.getGlobalBounds().width, map_background.getGlobalBounds().height), walkSpeed, m_Width, m_Height);
+
+			window.clear();
+			window.draw(map_background);
+			window.draw(character);
+
+			window.display();
+		} else if (GameState == 1001) {
+			GameState = 0;
+			std::cout << "new game";
+		}
+		else if (GameState == 1002) {
+
+			targets.clear();
+			distances.clear();
 
 				targets.clear();
 				distances.clear();
@@ -414,231 +567,13 @@ int main()
 					del_x = ((float)current_position.x - (float)target_position.x) / (120 * distances.at(target_village));
 					del_y = ((float)current_position.y - (float)target_position.y) / (120 * distances.at(target_village));
 					//village = targets.at(target_village);
-					std::cout << village << std::endl;
 					//target_village = 0;
 				}
 
 				if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && buttonPressed > 80.0f) {
 					GameState = 200 + village;
 				}
-			}
-		}
-		
-		if (GameState == 200) {
 			
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-
-					if (character_position.x > 100) {
-						character_position.x -= walkSpeed;
-					}
-					else {
-						if (map_position.x < -walkSpeed) {
-							map_position.x += walkSpeed;
-						}
-						else if (character_position.x > 0) {
-								character_position.x -= walkSpeed;
-							
-						}
-					}
-				}
-
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-					if (character_position.x + 50 < m_Width - 100) {
-						character_position.x += walkSpeed;
-					}
-					else {
-						if (map_position.x > -1*(1600 - m_Width) + walkSpeed + 100) {
-							map_position.x -= walkSpeed;
-						}
-						else if (character_position.x < m_Width - 50) {
-								character_position.x += walkSpeed;
-							}
-					}
-				
-					/*
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-						character_position.y -= walkSpeed;
-					}
-
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-						character_position.y += walkSpeed;
-					}*/
-				}
-
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-
-					if (character_position.y > 100) {
-						character_position.y -= walkSpeed;
-					}
-					else {
-						if (map_position.y < -walkSpeed) {
-							map_position.y += walkSpeed;
-						}
-						else if (character_position.y > 0) {
-							character_position.y -= walkSpeed;
-
-						}
-					}
-				}
-
-				if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-					if (character_position.y + 100 < m_Height - 100) {
-						character_position.y += walkSpeed;
-					}
-					else {
-						if (map_position.y > -1 * (1200 - m_Height) + walkSpeed + 100) {
-							map_position.y -= walkSpeed;
-						}
-						else if (character_position.y < m_Height - 100) {
-							character_position.y += walkSpeed;
-						}
-					}				
-			}
-		}
-
-		if (GameState == 0) {
-
-			window.clear();
-
-			sf::Sprite background(menu_background);
-			sf::Sprite title(title_texture);
-			sf::Sprite new_game(new_game_txt);
-			sf::Sprite continue_menu(continue_txt);
-			sf::Sprite exit_game(exit_game_txt);
-
-			title.setPosition(sf::Vector2f((m_Width / 2 - title.getTexture()->getSize().x / 2), m_Height / 4));
-			new_game.setPosition(sf::Vector2f((m_Width / 2 - new_game.getTexture()->getSize().x / 2), title.getPosition().y + title.getTexture()->getSize().y));
-			continue_menu.setPosition(sf::Vector2f((m_Width / 2 - continue_menu.getTexture()->getSize().x / 2), new_game.getPosition().y + new_game.getTexture()->getSize().y));
-			exit_game.setPosition(sf::Vector2f((m_Width / 2 - exit_game.getTexture()->getSize().x / 2), continue_menu.getPosition().y + continue_menu.getTexture()->getSize().y));
-
-			window.draw(background);
-			window.draw(title);
-			window.draw(new_game);
-			window.draw(continue_menu);
-			window.draw(exit_game);
-
-			if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-			{
-				if (sf::Mouse::getPosition(window).x > new_game.getPosition().x && sf::Mouse::getPosition(window).x < new_game.getPosition().x + new_game.getTexture()->getSize().x)
-					if (sf::Mouse::getPosition(window).y > new_game.getPosition().y && sf::Mouse::getPosition(window).y < new_game.getPosition().y + new_game.getTexture()->getSize().y) {
-						GameState = 1001;
-					}
-
-				if (sf::Mouse::getPosition(window).x > continue_menu.getPosition().x && sf::Mouse::getPosition(window).x < continue_menu.getPosition().x + continue_menu.getTexture()->getSize().x)
-					if (sf::Mouse::getPosition(window).y > continue_menu.getPosition().y && sf::Mouse::getPosition(window).y < continue_menu.getPosition().y + continue_menu.getTexture()->getSize().y) {
-						GameState = 1002;
-					}
-
-				if (sf::Mouse::getPosition(window).x > exit_game.getPosition().x && sf::Mouse::getPosition(window).x < exit_game.getPosition().x + exit_game.getTexture()->getSize().x)
-					if (sf::Mouse::getPosition(window).y > exit_game.getPosition().y && sf::Mouse::getPosition(window).y < exit_game.getPosition().y + exit_game.getTexture()->getSize().y) {
-						GameState = 1003;
-					}
-
-			}
-			window.display();
-		}
-		else if (GameState == 200) {
-
-			sf::Sprite map_background(sieblin_texture);
-			map_background.setPosition(map_position);
-			sf::Sprite character(test_character);
-			character.setPosition(character_position);
-
-			window.clear();
-			window.draw(map_background);
-			window.draw(character);
-
-			window.display();
-		}
-		else if (GameState == 1001) {
-			GameState = 0;
-			std::cout << "new game";
-		}
-		else if (GameState == 1002) {
-
-			targets.clear();
-			distances.clear();
-
-			switch (village) {
-			case(0):
-				for (int i = 0; i < sieblin_targets.size(); i++) {
-					targets.push_back(sieblin_targets.at(i));
-					distances.push_back(sieblin_distances.at(i));
-				}
-				break;
-			case (1):
-				for (int i = 0; i < roudenfal_targets.size(); i++) {
-					targets.push_back(roudenfal_targets.at(i));
-					distances.push_back(roudenfal_distances.at(i));
-				}
-				break;
-			case (2):
-				for (int i = 0; i < hahk_targets.size(); i++) {
-					targets.push_back(hahk_targets.at(i));
-					distances.push_back(hahk_distances.at(i));
-				}
-				break;
-			case (3):
-				for (int i = 0; i < bard_targets.size(); i++) {
-					targets.push_back(bard_targets.at(i));
-					distances.push_back(bard_distances.at(i));
-				}
-				break;
-			case (4):
-				for (int i = 0; i < sched_targets.size(); i++) {
-					targets.push_back(sched_targets.at(i));
-					distances.push_back(sched_distances.at(i));
-				}
-				break;
-			case (5):
-				for (int i = 0; i < hesen_targets.size(); i++) {
-					targets.push_back(hesen_targets.at(i));
-					distances.push_back(hesen_distances.at(i));
-				}
-				break;
-			case (6):
-				for (int i = 0; i < arra_targets.size(); i++) {
-					targets.push_back(arra_targets.at(i));
-					distances.push_back(arra_distances.at(i));
-				}
-				break;
-			case (7):
-				for (int i = 0; i < bud_targets.size(); i++) {
-					targets.push_back(bud_targets.at(i));
-					distances.push_back(bud_distances.at(i));
-				}
-				break;
-			case (8):
-				for (int i = 0; i < galf_targets.size(); i++) {
-					targets.push_back(galf_targets.at(i));
-					distances.push_back(galf_distances.at(i));
-				}
-				break;
-			case (9):
-				for (int i = 0; i < fiog_targets.size(); i++) {
-					targets.push_back(fiog_targets.at(i));
-					distances.push_back(fiog_distances.at(i));
-				}
-				break;
-			case (10):
-				for (int i = 0; i < galeb_targets.size(); i++) {
-					targets.push_back(galeb_targets.at(i));
-					distances.push_back(galeb_distances.at(i));
-				}
-				break;
-			case (11):
-				for (int i = 0; i < uinn_targets.size(); i++) {
-					targets.push_back(uinn_targets.at(i));
-					distances.push_back(uinn_distances.at(i));
-				}
-				break;
-			case (12):
-				for (int i = 0; i < hab_targets.size(); i++) {
-					targets.push_back(hab_targets.at(i));
-					distances.push_back(hab_distances.at(i));
-				}
-				break;
-			}
 
 			//	window.clear();
 			sf::Sprite map_background(map_texture);
@@ -659,6 +594,18 @@ int main()
 			travel_time_text.setStyle(sf::Text::Bold);
 			travel_time_text.setFillColor(sf::Color::Yellow);
 
+
+			//stream.clear();
+			stream.str("");
+			stream << player.gold << " gold";
+			sf::Text player_gold_text(stream.str(), font);
+
+			int pgtx = m_Width - 110;
+			player_gold_text.setPosition(sf::Vector2f(pgtx, 40));
+			player_gold_text.setCharacterSize(30);
+			player_gold_text.setStyle(sf::Text::Bold);
+			player_gold_text.setFillColor(sf::Color::Yellow);
+
 			sf::Sprite cart_sprite(cart);
 			cart_sprite.setPosition(sf::Vector2f(village_map_coordinates[village].x, village_map_coordinates[village].y));
 
@@ -666,6 +613,7 @@ int main()
 			window.draw(map_background);
 			window.draw(target_village_text);
 			window.draw(travel_time_text);
+			window.draw(player_gold_text);
 			window.draw(highlighter);
 			window.draw(cart_sprite);
 			window.display();
@@ -675,9 +623,6 @@ int main()
 		}
 		else if (GameState == 1100) {
 
-			std::cout << "current: " << current_position.x << std::endl;
-			std::cout << "target: " << target_position.x << std::endl;
-
 			bool complete_journey = false;
 
 			if (current_position.x < target_position.x) {
@@ -686,20 +631,17 @@ int main()
 						current_position.x -= del_x;
 						current_position.y -= del_y;
 					}
-
-					if (current_position.x - target_position.x > -0.5 && current_position.y - target_position.y > -0.5) {
+					if ((double)current_position.x - target_position.x > -0.5 && (double)current_position.y - target_position.y > -0.5) {
 						village = targets.at(target_village);
 						GameState = 1002;
 						target_village = 0;
 					}
-				}
-
-				if (current_position.y > target_position.y) {
-					if (current_position.x - target_position.x < 0 || current_position.y - target_position.y > 0) {
+				} else if (current_position.y > target_position.y) {
+					if (current_position.x - target_position.x < 0.5 || current_position.y - target_position.y > 0.5) {
 						current_position.x -= del_x;
 						current_position.y -= del_y;
 					}
-					if (current_position.x - target_position.x > -0.5 && current_position.y - target_position.y < 0.5) {
+					if ((double)current_position.x - target_position.x > -0.5 && (double)current_position.y - target_position.y < 0.5) {
 						village = targets.at(target_village);
 						GameState = 1002;
 						target_village = 0;
@@ -707,23 +649,20 @@ int main()
 				}
 			} else if (current_position.x > target_position.x) {
 				if (current_position.y < target_position.y) {
-					if (current_position.x - target_position.x > 0 || current_position.y - target_position.y < 0) {
+					if (current_position.x - target_position.x > -0.5 || current_position.y - target_position.y < 0.5) {
 						current_position.x -= del_x;
 						current_position.y -= del_y;
 					}
-					if (current_position.x - target_position.x < 0.5 && current_position.y - target_position.y > -0.5) {
+					if ((double)current_position.x - target_position.x < 0.5 && (double)current_position.y - target_position.y > -0.5) {
 						village = targets.at(target_village);
 						GameState = 1002;
 						target_village = 0;
 					}
-				}
-
-				if (current_position.y > target_position.y) {
+				}else if (current_position.y > target_position.y) {
 					if (current_position.x - target_position.x > 0 || current_position.y - target_position.y > 0) {
 						current_position.x -= del_x;
 						current_position.y -= del_y;
-					}
-					if (current_position.x - target_position.x < 0.5 && current_position.y - target_position.y < 0.5) {
+					} if ((double)current_position.x - (double)target_position.x < 0.5 && (double)current_position.y - target_position.y < 0.5) {
 						village = targets.at(target_village);
 						GameState = 1002;
 						target_village = 0;
@@ -745,15 +684,37 @@ int main()
 			window.draw(highlighter);
 			window.draw(cart_sprite);
 			window.display();
+
+			//create test for random encounters
+			float battle_random = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+			if (battle_random < 0.005) {
+				GameState = 666;
+			}
 		}
+
+		else if (GameState == 666) {
+
+		count++;
+		if (count > 120) {
+			GameState = 1100;
+			count = 0;
+		}
+
+		sf::Sprite crab_battle_back(crab_battle);
+
+		window.clear();
+		window.draw(crab_battle_back);
+		window.display();
+			}
 
 		float endFrame = clock.getElapsedTime().asMilliseconds();
 
 		while (endFrame - startFrame < 16.667f) {
-
 			endFrame = clock.getElapsedTime().asMilliseconds();
 		}
 		buttonPressed += clock.getElapsedTime().asMilliseconds();
+
+		std::cout << target_village << std::endl;
 	}
 
 	return 0;
