@@ -1,88 +1,122 @@
 ﻿  Source.cpp
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(80): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(85): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(370): warning C4244: 'initializing': conversion from 'sf::Int32' to 'float', possible loss of data
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(388): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(388): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(389): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(390): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(391): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=unsigned int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(558): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(565): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(566): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(581): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(604): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(610): warning C4244: 'argument': conversion from 'T' to 'T', possible loss of data
-          with
-          [
-              T=int
-          ]
-          and
-          [
-              T=float
-          ]
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(675): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(710): warning C4244: 'initializing': conversion from 'sf::Int32' to 'float', possible loss of data
-C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(713): warning C4244: '=': conversion from 'sf::Int32' to 'float', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(80,15): warning C4244:  'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(85,12): warning C4244:  'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,56): warning C4244:  'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,56): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,56): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,56): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,56): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,42): warning C4244:  'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,42): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,42): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,42): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(101,42): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(375,20): warning C4244:  'initializing': conversion from 'sf::Int32' to 'float', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,97): warning C4244:  'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,97): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,97): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,97): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,97): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:             T=unsigned int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(393,48): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:             T=unsigned int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(394,51): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:             T=unsigned int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(395,56): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:             T=unsigned int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(396,52): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(579,42): warning C4267:  '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:             T=int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,106): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:             T=int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(586,70): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:             T=int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,143): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:             T=int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(587,88): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(602,141): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(602,82): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(625,46): warning C4244:  'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(625,46): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(625,46): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(625,46): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(625,46): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:             T=int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,109): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:  'argument': conversion from 'T' to 'T', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:         with
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:             T=int
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:         and
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:         [
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:             T=float
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(631,73): warning C4244:         ]
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(696,141): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(696,82): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(731,18): warning C4244:  'initializing': conversion from 'sf::Int32' to 'float', possible loss of data
+C:\Users\jc15\source\repos\Explorer\Explorer\Source.cpp(734,52): warning C4244:  '=': conversion from 'sf::Int32' to 'float', possible loss of data
   Explorer.vcxproj -> C:\Users\jc15\source\repos\Explorer\x64\Debug\Explorer.exe

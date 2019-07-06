@@ -104,7 +104,7 @@ int main()
 	std::vector<std::string> village_names;
 	std::stringstream stream;
 
-	int walkSpeed = 500;
+	int walkSpeed = 5;
 
 	//0
 	village_names.push_back("Sieblin");
@@ -293,6 +293,11 @@ int main()
 		std::cout << "Roudenfal background failed to load" << std::endl;
 	}
 
+	sf::Texture bardrack_texture;
+	if (!bardrack_texture.loadFromFile("bardrack.png")) {
+		std::cout << "Bardrack background failed to load" << std::endl;
+	}
+
 	sf::Texture crab_battle;
 	if (!crab_battle.loadFromFile("crabbattle.png")) {
 
@@ -442,7 +447,23 @@ int main()
 			window.draw(character);
 
 			window.display();
-		} else if (GameState == 1001) {
+		}
+		else if (GameState == 203) {//bardrack
+			sf::Sprite map_background(bardrack_texture);
+			map_background.setScale(sf::Vector2f(32.0f, 32.0f));
+			map_background.setPosition(map_position);
+			sf::Sprite character(test_character);
+			character.setPosition(character_position);
+
+			town_keyboard_movement(character_position, map_position, sf::Vector2f(map_background.getGlobalBounds().width, map_background.getGlobalBounds().height), walkSpeed, m_Width, m_Height);
+
+			window.clear();
+			window.draw(map_background);
+			window.draw(character);
+
+			window.display();
+		}
+		else if (GameState == 1001) {
 			GameState = 0;
 			std::cout << "new game";
 		}
